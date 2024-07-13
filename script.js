@@ -1,7 +1,3 @@
-// Event Listener that allows the button to add an item to the list
-let addItemsHandler = document.getElementById("addItemsHandler");
-addItemsHandler.addEventListener("click", addItems);
-
 // Display the date onload
 let dateVar = new Date();
 document.getElementById('time').innerHTML = "<b>Time:</b> " + dateVar.toLocaleTimeString()
@@ -21,7 +17,7 @@ document.getElementById('date').innerHTML = "<b>Date:</b> " + dateVar.toLocaleDa
 let listItems = document.getElementById("list-items");
 let userInput = document.getElementById("input-items");
 
-function addItems() {
+const addItems = () => {
     if (userInput.value === "") {
         return null;
     } else {
@@ -53,3 +49,12 @@ function addItems() {
         });
     }
 }
+
+const addItemsBtn = document.getElementById("addItemsBtn");
+
+addItemsBtn.addEventListener("click", addItems);
+userInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        addItems();
+    }
+});
